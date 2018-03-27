@@ -25,9 +25,21 @@ namespace Todos
         public MainPage()
         {
             this.InitializeComponent();
+            this.ViewModel = new ViewModels.TodoItemViewModel();
         }
-        private void checkBox1Click(object sender, RoutedEventArgs e)
+
+        ViewModels.TodoItemViewModel ViewModel { get; set; }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (e.Parameter.GetType() == typeof(ViewModels.TodoItemViewModel))
+            {
+                this.ViewModel = (ViewModels.TodoItemViewModel)e.Parameter;
+            }
+        }
+
+        private void checkBox1Click(object sender, RoutedEventArgs e)
+        {/*
             if (line1.Visibility == Visibility.Visible)
             {
                 line1.Visibility = Visibility.Collapsed;
@@ -35,12 +47,120 @@ namespace Todos
             else
             {
                 line1.Visibility = Visibility.Visible;
-            }
+            }*/
         }
 
         private void navToButton(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(NewPage));
+            this.Frame.Navigate(typeof(NewPage), ViewModel);
+        }
+
+        private void CancelClick(object sender, RoutedEventArgs e)
+        {
+            textTitle.Text = "";
+            textDetail.Text = "";
+            DueDate.Date = DateTimeOffset.Now;
+            if ((string)Create.Content == "Update")
+            {
+                Create.Content = "Create";
+                Create.Click -= Update;
+                Create.Click += CreateClick;
+            }
+        }
+
+        private async void CreateClick(object sender, RoutedEventArgs e)
+        {
+            var dialog = new ContentDialog()
+            {
+                Title = "提示信息",
+                PrimaryButtonText = "确定"
+            };
+
+            if (textTitle.Text == "")
+            {
+                dialog.Content = "标题不能为空";
+                await dialog.ShowAsync();
+            }
+            else if (textDetail.Text == "")
+            {
+                dialog.Content = "内容主体不能为空";
+                await dialog.ShowAsync();
+            }
+            else if (DueDate.Date < DateTime.Now)
+            {
+                dialog.Content = "日期不正确";
+                await dialog.ShowAsync();
+            }
+            else
+            {
+                ViewModel.AddTodoItem(textTitle.Text, textDetail.Text, DueDate.Date);
+                textTitle.Text = "";
+                textDetail.Text = "";
+                DueDate.Date = DateTimeOffset.Now;
+            }
+        }
+
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ViewModel.SelectedItem = (Models.TodoItem)(e.ClickedItem);
+            if (backgroundGrid.ActualWidth <= 800)
+            {
+                Frame.Navigate(typeof(NewPage), ViewModel);
+            }
+            else
+            {
+                if (ViewModel.SelectedItem == null)
+                {
+                    Create.Content = "Create";
+                }
+                else
+                {
+                    Create.Content = "Update";
+                    Create.Click -= CreateClick;
+                    Create.Click += Update;
+                    textTitle.Text = ViewModel.SelectedItem.title;
+                    textDetail.Text = ViewModel.SelectedItem.description;
+                    DueDate.Date = ViewModel.SelectedItem.duedate;
+                }
+            }
+        }
+
+        private async void Update(object sender, RoutedEventArgs e)
+        {
+            var dialog = new ContentDialog()
+            {
+                Title = "提示信息",
+                PrimaryButtonText = "确定"
+            };
+
+            if (textTitle.Text == "")
+            {
+                dialog.Content = "标题不能为空";
+                await dialog.ShowAsync();
+            }
+            else if (textDetail.Text == "")
+            {
+                dialog.Content = "内容主体不能为空";
+                await dialog.ShowAsync();
+            }
+            else if (DueDate.Date < DateTimeOffset.Now)
+            {
+                dialog.Content = "日期不正确";
+                await dialog.ShowAsync();
+            }
+            else
+            {
+                ViewModel.UpdateTodoItem(textTitle.Text, textDetail.Text, DueDate.Date);
+                textTitle.Text = "";
+                textDetail.Text = "";
+                DueDate.Date = DateTimeOffset.Now;
+                if ((string)Create.Content == "Update")
+                {
+                    Create.Content = "Create";
+                    Create.Click -= Update;
+                    Create.Click += CreateClick;
+                }
+            }
         }
     }
 }

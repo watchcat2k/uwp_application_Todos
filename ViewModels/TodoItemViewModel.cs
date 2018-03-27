@@ -12,7 +12,26 @@ namespace Todos.ViewModels
         private ObservableCollection<Models.TodoItem> allItems = new ObservableCollection<Models.TodoItem>();
         public ObservableCollection<Models.TodoItem> AllItems { get { return this.allItems; } }
 
-        public void AddTodoItem(string title, string description, DateTime duedate)
+        private Models.TodoItem selectedItem = null;
+        public Models.TodoItem SelectedItem
+        {
+            get
+            {
+                return selectedItem;
+            }
+            set
+            {
+                this.selectedItem = value;
+            }
+        }
+
+        public TodoItemViewModel()
+        {
+            this.allItems.Add(new Models.TodoItem("title1", "description1", DateTimeOffset.Now));
+            this.allItems.Add(new Models.TodoItem("title2", "description2", DateTimeOffset.Now));
+        }
+
+        public void AddTodoItem(string title, string description, DateTimeOffset duedate)
         {
             this.allItems.Add(new Models.TodoItem(title, description, duedate));
         }
@@ -22,9 +41,12 @@ namespace Todos.ViewModels
             //this.selectedItem = null;
         }
 
-        public void UpdateTodoItem(string id, string title, string description)
+        public void UpdateTodoItem(string title, string description, DateTimeOffset duedate)
         {
-            //this.selectedItem = null;
+            this.selectedItem.title = title;
+            this.selectedItem.description = description;
+            this.selectedItem.duedate = duedate;
+            this.selectedItem = null;
         }
     }
 }
