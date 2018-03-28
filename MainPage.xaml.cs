@@ -82,20 +82,14 @@ namespace Todos
         }
 
         private void checkBox1Click(object sender, RoutedEventArgs e)
-        {/*
-            if (line1.Visibility == Visibility.Visible)
-            {
-                line1.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                line1.Visibility = Visibility.Visible;
-            }*/
+        {
+            
         }
 
         private void navToButton(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(NewPage), ViewModel);
+            if (backgroundGrid.ActualWidth <= 800)
+                this.Frame.Navigate(typeof(NewPage), ViewModel);
         }
 
         private void CancelClick(object sender, RoutedEventArgs e)

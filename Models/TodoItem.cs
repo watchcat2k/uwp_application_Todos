@@ -12,7 +12,8 @@ namespace Todos.Models
         public string id;
         public string title { get; set; }
         public string description { get; set; }
-        public bool? completed { get; set; }
+        private bool? private_completed;
+        public bool? completed { get { return this.private_completed; } set { this.private_completed = value; } }
         public DateTimeOffset duedate { get; set; }
         //public string coverImage { get; set; }
 
@@ -22,7 +23,7 @@ namespace Todos.Models
             this.id = this.private_id;
             this.title = title;
             this.description = description;
-            this.completed = false;
+            this.private_completed = false;
             this.duedate = duedate;
         }
     }
