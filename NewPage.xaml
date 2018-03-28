@@ -32,7 +32,7 @@
     </Grid>
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton></AppBarButton>
+            <AppBarButton Name="Delete" Icon="Delete" Click="deleteButton" Visibility="Collapsed"></AppBarButton>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

@@ -40,10 +40,12 @@ namespace Todos
             {
                 Create.Content = "Update";
                 Create.Click -= CreateClick;
-                Create.Click += Update;
+                Create.Click -= Update;
+                Create.Click += CreateClick;
                 textTitle.Text = ViewModel.SelectedItem.title;
                 textDetail.Text = ViewModel.SelectedItem.description;
                 DueDate.Date = ViewModel.SelectedItem.duedate;
+                Delete.Visibility = Visibility.Visible;
             }
         }
 
@@ -57,6 +59,8 @@ namespace Todos
                 Create.Content = "Create";
                 Create.Click -= Update;
                 Create.Click += CreateClick;
+                Delete.Visibility = Visibility.Collapsed;
+                ViewModel.SelectedItem = null;
             }
         }
 
@@ -124,6 +128,16 @@ namespace Todos
                 DueDate.Date = DateTimeOffset.Now;
                 Frame.Navigate(typeof(MainPage), ViewModel);
             }
+        }
+
+        private void deleteButton(object sender, RoutedEventArgs e)
+        {
+            ViewModel.RemoveTodoItem(textTitle.Text, textDetail.Text, DueDate.Date);
+            textTitle.Text = "";
+            textDetail.Text = "";
+            DueDate.Date = DateTimeOffset.Now;
+            Delete.Visibility = Visibility.Collapsed;
+            Frame.Navigate(typeof(MainPage), ViewModel);
         }
     }
 }

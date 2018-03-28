@@ -13,38 +13,40 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-
+        <Image Source="Assets/loginBackground.jpg" Width="auto" Stretch="Fill" Grid.ColumnSpan="2"/>
         <Grid Grid.Column="0">
-            <Image Source="Assets/loginBackground.jpg" Stretch="Fill"/>
+            
 
             <TextBlock Text="Todos" FontSize="28" FontWeight="Bold" Height="52" VerticalAlignment="Top"></TextBlock>
 
-            <ScrollViewer Height="588" ScrollViewer.VerticalScrollBarVisibility="Visible" VerticalAlignment="Center" Margin="0,0,0,52">
+            <ScrollViewer Height="588" ScrollViewer.VerticalScrollBarVisibility="Visible" VerticalAlignment="Center" Margin="0,0,0,52" VerticalScrollMode="Enabled">
                 <Grid Height="500" VerticalAlignment="Top" Margin="0,40,0,0" >
                     <ListView x:ConnectionId='13' IsItemClickEnabled="True"                                                                         >
                         <ListView.ItemTemplate>
                             <DataTemplate                         >
-                                <Grid x:ConnectionId='14' Height="100" VerticalAlignment="Top" Width="auto">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="42"></ColumnDefinition>
-                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <ColumnDefinition Width="100"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
+                                <UserControl x:ConnectionId='14'>
+                                    <Grid Height="100" VerticalAlignment="Top" Width="auto">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="42"></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="100"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
 
-                                    <CheckBox x:ConnectionId='15' Grid.Column="0" VerticalAlignment="Top" Height="32" Width="32" HorizontalAlignment="Left"                        Margin="0,38,0,0"></CheckBox>
-                                    <Image Source="Assets/logo.png" Height="90" Width="90" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2"/>
-                                    <TextBlock x:ConnectionId='16' Name="textBlock1"                       VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Margin="100,43,0,0" Grid.Column="2" Height="20" Width="61"/>
-                                    <Line Name="line1" Stretch="Fill" Stroke="Black" StrokeThickness="2" X1="1" Margin="90,49,10,49" VerticalAlignment="Center" Grid.Column="2" HorizontalAlignment="Center"/>
-                                    <AppBarButton Icon="Setting" IsCompact="True" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,29,0,0" Width="90" Grid.Column="3">
-                                        <AppBarButton.Flyout>
-                                            <MenuFlyout Placement="Bottom">
-                                                <MenuFlyoutItem>Edit</MenuFlyoutItem>
-                                                <MenuFlyoutItem>Delete</MenuFlyoutItem>
-                                            </MenuFlyout>
-                                        </AppBarButton.Flyout>
-                                    </AppBarButton>
-                                </Grid>
+                                        <CheckBox x:ConnectionId='15' Grid.Column="0" VerticalAlignment="Top" Height="32" Width="32" HorizontalAlignment="Left"                        Margin="0,38,0,0"></CheckBox>
+                                        <Image Source="Assets/logo.png" Height="90" Width="90" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2"/>
+                                        <TextBlock x:ConnectionId='16' Name="textBlock1"                       VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Margin="100,43,0,0" Grid.Column="2" Height="20" Width="61"/>
+                                        <Line Name="line1" Stretch="Fill" Stroke="Black" StrokeThickness="2" X1="1" Margin="90,49,10,49" VerticalAlignment="Center" Grid.Column="2" HorizontalAlignment="Center"/>
+                                        <AppBarButton Icon="Setting" IsCompact="True" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,29,0,0" Width="90" Grid.Column="3">
+                                            <AppBarButton.Flyout>
+                                                <MenuFlyout Placement="Bottom">
+                                                    <MenuFlyoutItem>Edit</MenuFlyoutItem>
+                                                    <MenuFlyoutItem>Delete</MenuFlyoutItem>
+                                                </MenuFlyout>
+                                            </AppBarButton.Flyout>
+                                        </AppBarButton>
+                                    </Grid>
+                                </UserControl>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
@@ -57,7 +59,7 @@
 
             <ScrollViewer Margin="0,37,0,0" VerticalAlignment="Center" Height="583">
                 <Grid Height="583" VerticalAlignment="Center" Width="360">
-                    <Image Source="Assets/loginBackground.jpg" Width="240" Margin="60,0,60,437"></Image>
+                    <Image Source="Assets/logo.png" Margin="60,0,63,460"/>
                     <Button x:ConnectionId='4' x:Name="selectPiture" Content="select" HorizontalAlignment="Center" Margin="235,105,60,400" VerticalAlignment="Center" RenderTransformOrigin="-0.497,-3.594"/>
 
                     <TextBlock x:ConnectionId='5' x:Name="textBlock" HorizontalAlignment="Center" Margin="30,148,296,362" TextWrapping="Wrap" Text="title" VerticalAlignment="Center" FontSize="20" RenderTransformOrigin="0.717,-1.017"/>
@@ -75,12 +77,13 @@
                 </Grid>
             </ScrollViewer>
         </Grid>
-        
+
     </Grid>
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:ConnectionId='17' Icon="Add"                    ></AppBarButton>
+            <AppBarButton x:ConnectionId='17' Name="Delete" Icon="Delete"                      Visibility="Collapsed"></AppBarButton>
+            <AppBarButton x:ConnectionId='18' Icon="Add"                    ></AppBarButton>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

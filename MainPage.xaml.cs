@@ -63,8 +63,11 @@ namespace Todos
             if ((string)Create.Content == "Update")
             {
                 Create.Content = "Create";
+                Create.Click -= CreateClick;
                 Create.Click -= Update;
                 Create.Click += CreateClick;
+                Delete.Visibility = Visibility.Collapsed;
+                ViewModel.SelectedItem = null;
             }
         }
 
@@ -97,6 +100,7 @@ namespace Todos
                 textTitle.Text = "";
                 textDetail.Text = "";
                 DueDate.Date = DateTimeOffset.Now;
+                
             }
         }
 
@@ -115,8 +119,10 @@ namespace Todos
                 }
                 else
                 {
+                    Delete.Visibility = Visibility.Visible;
                     Create.Content = "Update";
                     Create.Click -= CreateClick;
+                    Create.Click -= Update;
                     Create.Click += Update;
                     textTitle.Text = ViewModel.SelectedItem.title;
                     textDetail.Text = ViewModel.SelectedItem.description;
@@ -157,9 +163,28 @@ namespace Todos
                 if ((string)Create.Content == "Update")
                 {
                     Create.Content = "Create";
+                    Create.Click -= CreateClick;
                     Create.Click -= Update;
                     Create.Click += CreateClick;
                 }
+                dialog.Content = "更新成功";
+                await dialog.ShowAsync();
+            }
+        }
+
+        private void deleteButton(object sender, RoutedEventArgs e)
+        {
+            ViewModel.RemoveTodoItem(textTitle.Text, textDetail.Text, DueDate.Date);
+            textTitle.Text = "";
+            textDetail.Text = "";
+            DueDate.Date = DateTimeOffset.Now;
+            if ((string)Create.Content == "Update")
+            {
+                Create.Content = "Create";
+                Create.Click -= CreateClick;
+                Create.Click -= Update;
+                Create.Click += CreateClick;
+                Delete.Visibility = Visibility.Collapsed;
             }
         }
     }

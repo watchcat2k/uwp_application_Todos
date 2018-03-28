@@ -36,9 +36,10 @@ namespace Todos.ViewModels
             this.allItems.Add(new Models.TodoItem(title, description, duedate));
         }
 
-        public void RemoveTodoItem(string id)
+        public void RemoveTodoItem(string title, string description, DateTimeOffset duedate)
         {
-            //this.selectedItem = null;
+            this.allItems.Remove(this.selectedItem);
+            this.selectedItem = null;
         }
 
         public void UpdateTodoItem(string title, string description, DateTimeOffset duedate)
