@@ -1,14 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
+  <Roots.Interfaces>
+    <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
+  </Roots.Interfaces>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application">
       <RootProperty Name="RequestedTheme" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Height" />
+      <RootProperty Name="Resources" />
       <RootProperty Name="Content" />
       <RootProperty Name="BottomAppBar" />
     </RootType>
+    <RootType FullName="Todos.LineConverter" />
+    <RootType FullName="Todos.isCheckedConverter" />
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="Name" />
       <RootProperty Name="Background" />
@@ -102,7 +108,10 @@
       <RootProperty Name="ItemTemplate" />
       <RootEvent Name="ItemClick" />
     </RootType>
-    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension" />
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension">
+      <RootProperty Name="Converter" />
+      <RootProperty Name="Mode" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
     </RootType>
@@ -110,11 +119,13 @@
       <RootProperty Name="Content" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
+      <RootProperty Name="Name" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Height" />
       <RootProperty Name="Width" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Margin" />
+      <RootProperty Name="IsChecked" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Shapes.Line">
@@ -125,29 +136,17 @@
       <RootProperty Name="X1" />
       <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
-      <RootProperty Name="Icon" />
-      <RootProperty Name="IsCompact" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Width" />
-      <RootProperty Name="Flyout" />
-      <RootProperty Name="Name" />
       <RootProperty Name="Visibility" />
-      <RootEvent Name="Click" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyout">
-      <RootProperty Name="Placement" />
-      <RootProperty Name="Items" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutItem">
-      <RootProperty Name="Text" />
-    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
       <RootProperty Name="PrimaryCommands" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Name" />
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Visibility" />
+      <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Todos.MainPage" />
     <RootType FullName="Todos.NewPage" />

@@ -132,17 +132,23 @@ namespace Todos.Todos_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[4];
-            _typeNameTable[0] = "Todos.MainPage";
-            _typeNameTable[1] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[2] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[3] = "Todos.NewPage";
+            _typeNameTable = new string[7];
+            _typeNameTable[0] = "Todos.LineConverter";
+            _typeNameTable[1] = "Object";
+            _typeNameTable[2] = "Todos.isCheckedConverter";
+            _typeNameTable[3] = "Todos.MainPage";
+            _typeNameTable[4] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[5] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[6] = "Todos.NewPage";
 
-            _typeTable = new global::System.Type[4];
-            _typeTable[0] = typeof(global::Todos.MainPage);
-            _typeTable[1] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[2] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[3] = typeof(global::Todos.NewPage);
+            _typeTable = new global::System.Type[7];
+            _typeTable[0] = typeof(global::Todos.LineConverter);
+            _typeTable[1] = typeof(global::System.Object);
+            _typeTable[2] = typeof(global::Todos.isCheckedConverter);
+            _typeTable[3] = typeof(global::Todos.MainPage);
+            _typeTable[4] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[5] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[6] = typeof(global::Todos.NewPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -177,8 +183,10 @@ namespace Todos.Todos_XamlTypeInfo
             return -1;
         }
 
-        private object Activate_0_MainPage() { return new global::Todos.MainPage(); }
-        private object Activate_3_NewPage() { return new global::Todos.NewPage(); }
+        private object Activate_0_LineConverter() { return new global::Todos.LineConverter(); }
+        private object Activate_2_isCheckedConverter() { return new global::Todos.isCheckedConverter(); }
+        private object Activate_3_MainPage() { return new global::Todos.MainPage(); }
+        private object Activate_6_NewPage() { return new global::Todos.NewPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -190,24 +198,42 @@ namespace Todos.Todos_XamlTypeInfo
             switch (typeIndex)
             {
 
-            case 0:   //  Todos.MainPage
-                userType = new global::Todos.Todos_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_0_MainPage;
+            case 0:   //  Todos.LineConverter
+                userType = new global::Todos.Todos_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_0_LineConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 1:   //  Windows.UI.Xaml.Controls.Page
+            case 1:   //  Object
                 xamlType = new global::Todos.Todos_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 2:   //  Windows.UI.Xaml.Controls.UserControl
-                xamlType = new global::Todos.Todos_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+            case 2:   //  Todos.isCheckedConverter
+                userType = new global::Todos.Todos_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_2_isCheckedConverter;
+                userType.SetIsLocalType();
+                xamlType = userType;
                 break;
 
-            case 3:   //  Todos.NewPage
+            case 3:   //  Todos.MainPage
                 userType = new global::Todos.Todos_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_3_NewPage;
+                userType.Activator = Activate_3_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 4:   //  Windows.UI.Xaml.Controls.Page
+                xamlType = new global::Todos.Todos_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 5:   //  Windows.UI.Xaml.Controls.UserControl
+                xamlType = new global::Todos.Todos_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 6:   //  Todos.NewPage
+                userType = new global::Todos.Todos_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_6_NewPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;

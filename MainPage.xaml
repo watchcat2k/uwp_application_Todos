@@ -8,6 +8,11 @@
     xmlns:md="using:Todos.Models"
     mc:Ignorable="d" Height="Auto">
 
+    <UserControl.Resources>
+        <local:LineConverter x:Key="LineConverter"/>
+        <local:isCheckedConverter x:Key="isCheckedConverter"/>
+    </UserControl.Resources>
+
     <Grid Name="backgroundGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -30,21 +35,12 @@
                                             <ColumnDefinition Width="42"></ColumnDefinition>
                                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="100"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
 
-                                        <CheckBox Grid.Column="0" VerticalAlignment="Top" Height="32" Width="32" HorizontalAlignment="Left" Click="checkBox1Click" Margin="0,38,0,0"></CheckBox>
+                                        <CheckBox Name="checkbox" Grid.Column="0" VerticalAlignment="Top" Height="32" Width="32" HorizontalAlignment="Left" Click="checkBox1Click" Margin="0,38,0,0" IsChecked="{x:Bind completed, Mode=TwoWay}"></CheckBox>
                                         <Image Source="Assets/logo.png" Height="90" Width="90" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2"/>
                                         <TextBlock Name="textBlock1" Text="{x:Bind title}" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Margin="100,43,0,0" Grid.Column="2" Height="20" Width="61"/>
-                                        <Line Name="line1" Stretch="Fill" Stroke="Black" StrokeThickness="2" X1="1" Margin="90,49,10,49" VerticalAlignment="Center" Grid.Column="2" HorizontalAlignment="Center"/>
-                                        <AppBarButton Icon="Setting" IsCompact="True" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,29,0,0" Width="90" Grid.Column="3">
-                                            <AppBarButton.Flyout>
-                                                <MenuFlyout Placement="Bottom">
-                                                    <MenuFlyoutItem>Edit</MenuFlyoutItem>
-                                                    <MenuFlyoutItem>Delete</MenuFlyoutItem>
-                                                </MenuFlyout>
-                                            </AppBarButton.Flyout>
-                                        </AppBarButton>
+                                        <Line Name="line1" Stretch="Fill" Stroke="Black" StrokeThickness="2" X1="1" Margin="90,49,10,49" VerticalAlignment="Center" Grid.Column="2" Visibility="{x:Bind completed, Converter={StaticResource LineConverter}, Mode=OneWay}" />
                                     </Grid>
                                 </UserControl>
                             </DataTemplate>

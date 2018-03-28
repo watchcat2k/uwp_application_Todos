@@ -20,6 +20,49 @@ namespace Todos
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
+
+    public class LineConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            bool ischecked = (bool)value;
+            if (ischecked)
+            {
+                return Visibility.Visible;
+            }
+            else
+            {
+                return Visibility.Collapsed;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class isCheckedConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            bool ischecked = (bool)value;
+            if (ischecked)
+            {
+                return Visibility.Visible;
+            }
+            else
+            {
+                return Visibility.Collapsed;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public sealed partial class MainPage : Page
     {
         public MainPage()

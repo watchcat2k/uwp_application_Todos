@@ -12,7 +12,7 @@ namespace Todos.Models
         public string id;
         public string title { get; set; }
         public string description { get; set; }
-        public bool completed { get; set; }
+        public bool? completed { get; set; }
         public DateTimeOffset duedate { get; set; }
         //public string coverImage { get; set; }
 
