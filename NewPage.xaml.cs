@@ -41,7 +41,7 @@ namespace Todos
                 Create.Content = "Update";
                 Create.Click -= CreateClick;
                 Create.Click -= Update;
-                Create.Click += CreateClick;
+                Create.Click += Update;
                 textTitle.Text = ViewModel.SelectedItem.title;
                 textDetail.Text = ViewModel.SelectedItem.description;
                 DueDate.Date = ViewModel.SelectedItem.duedate;
@@ -57,6 +57,7 @@ namespace Todos
             if ((string)Create.Content == "Update")
             {
                 Create.Content = "Create";
+                Create.Click -= CreateClick;
                 Create.Click -= Update;
                 Create.Click += CreateClick;
                 Delete.Visibility = Visibility.Collapsed;
