@@ -334,8 +334,8 @@
     <AppxPackagedFile Include="C:\Users\Shinelon\.nuget\packages\System.Xml.XmlSerializer\4.0.10\lib\netcore50\System.Xml.XmlSerializer.dll">
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Assets\loginBackground.jpg">
-      <PackagePath>Assets\loginBackground.jpg</PackagePath>
+    <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Assets\banana.png">
+      <PackagePath>Assets\banana.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Assets\logo.png">
       <PackagePath>Assets\logo.png</PackagePath>
@@ -366,6 +366,9 @@
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Assets\loginBackground.jpg">
+      <PackagePath>Assets\loginBackground.jpg</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>

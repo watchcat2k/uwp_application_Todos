@@ -53,10 +53,10 @@
 
             <ScrollViewer Height="588" ScrollViewer.VerticalScrollBarVisibility="Visible" VerticalAlignment="Center" Margin="0,0,0,52" VerticalScrollMode="Enabled">
                 <Grid Height="500" VerticalAlignment="Top" Margin="0,40,0,0" >
-                    <ListView x:ConnectionId='19' IsItemClickEnabled="True"                                                                         >
+                    <ListView x:ConnectionId='20' IsItemClickEnabled="True"                                                                         >
                         <ListView.ItemTemplate>
                             <DataTemplate                         >
-                                <UserControl x:ConnectionId='20'>
+                                <UserControl x:ConnectionId='21'>
                                     <Grid Height="100" VerticalAlignment="Top" Width="auto">
                                         <VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup x:Name="VisualStateGroup">
@@ -86,9 +86,9 @@
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
 
-                                        <CheckBox x:ConnectionId='21' Name="checkbox" Grid.Column="0" VerticalAlignment="Top" Height="32" Width="32" HorizontalAlignment="Left"                        Margin="0,38,0,0" IsChecked="{Binding completed, Mode=TwoWay}"/>
-                                        <Image Name="image" Source="Assets/logo.png" Height="90" Width="90" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2"/>
-                                        <TextBlock x:ConnectionId='22' Name="textBlock1"                       VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Margin="100,43,0,0" Grid.Column="2" Height="20" Width="61"/>
+                                        <CheckBox x:ConnectionId='22' Name="checkbox" Grid.Column="0" VerticalAlignment="Top" Height="32" Width="32" HorizontalAlignment="Left"                        Margin="0,38,0,0" IsChecked="{Binding completed, Mode=TwoWay}"/>
+                                        <Image x:ConnectionId='23' Name="image"                                           Height="90" Width="90" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2"/>
+                                        <TextBlock x:ConnectionId='24' Name="textBlock1"                                    VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Margin="100,43,0,0" Grid.Column="2" Height="20" Width="61"/>
                                         <Line Name="line1" Stretch="Fill" Stroke="Black" StrokeThickness="2" X1="1" Margin="90,49,10,49" VerticalAlignment="Center" Grid.Column="2" Visibility="{Binding ElementName=checkbox, Path=IsChecked}" />
                                     </Grid>
                                 </UserControl>
@@ -104,20 +104,20 @@
 
             <ScrollViewer Margin="0,37,0,0" VerticalAlignment="Center" Height="583">
                 <Grid Height="583" VerticalAlignment="Center" Width="360">
-                    <Image Source="Assets/logo.png" Margin="60,0,63,460"/>
-                    <Button x:ConnectionId='10' x:Name="selectPiture" Content="select" HorizontalAlignment="Center" Margin="235,105,60,400" VerticalAlignment="Center" RenderTransformOrigin="-0.497,-3.594"/>
+                    <Image x:ConnectionId='10' Name="MyImage" Source="Assets/banana.png" Margin="60,0,63,460"/>
+                    <Button x:ConnectionId='11' x:Name="selectPiture" Content="select" HorizontalAlignment="Center" Margin="235,105,60,400" VerticalAlignment="Center" RenderTransformOrigin="-0.497,-3.594"                          />
 
-                    <TextBlock x:ConnectionId='11' x:Name="textBlock" HorizontalAlignment="Center" Margin="30,148,296,362" TextWrapping="Wrap" Text="title" VerticalAlignment="Center" FontSize="20" RenderTransformOrigin="0.717,-1.017"/>
-                    <TextBox x:ConnectionId='12' x:Name="textTitle" HorizontalAlignment="Center" Margin="30,180,30,310" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="47" FontSize="24" Width="300"/>
+                    <TextBlock x:ConnectionId='12' x:Name="textBlock" HorizontalAlignment="Center" Margin="30,148,296,362" TextWrapping="Wrap" Text="title" VerticalAlignment="Center" FontSize="20" RenderTransformOrigin="0.717,-1.017"/>
+                    <TextBox x:ConnectionId='13' x:Name="textTitle" HorizontalAlignment="Center" Margin="30,180,30,310" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="47" FontSize="24" Width="300"/>
 
-                    <TextBlock x:ConnectionId='13' x:Name="textBlock1" HorizontalAlignment="Center" Margin="30,232,244,278" TextWrapping="Wrap" Text="Detail" VerticalAlignment="Center" FontSize="20" Width="86" RenderTransformOrigin="0.535,4"/>
-                    <TextBox x:ConnectionId='14' x:Name="textDetail" HorizontalAlignment="Center" Margin="30,264,30,122" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="151" Width="300" FontSize="24"/>
+                    <TextBlock x:ConnectionId='14' x:Name="textBlock1" HorizontalAlignment="Center" Margin="30,232,244,278" TextWrapping="Wrap" Text="Detail" VerticalAlignment="Center" FontSize="20" Width="86" RenderTransformOrigin="0.535,4"/>
+                    <TextBox x:ConnectionId='15' x:Name="textDetail" HorizontalAlignment="Center" Margin="30,264,30,122" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="151" Width="300" FontSize="24"/>
 
-                    <TextBlock x:ConnectionId='15' x:Name="textBlock2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Due Date" VerticalAlignment="Center" RenderTransformOrigin="-0.301,1.097" FontSize="20" Margin="30,419,247,91"/>
-                    <DatePicker x:ConnectionId='16' x:Name="DueDate" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Margin="30,446,30,59"/>
+                    <TextBlock x:ConnectionId='16' x:Name="textBlock2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Due Date" VerticalAlignment="Center" RenderTransformOrigin="-0.301,1.097" FontSize="20" Margin="30,419,247,91"/>
+                    <DatePicker x:ConnectionId='17' x:Name="DueDate" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Margin="30,446,30,59"/>
                     <RelativePanel Margin="0,487,0,18" VerticalAlignment="Center" HorizontalAlignment="Center" Width="360">
-                        <Button x:ConnectionId='17' x:Name="Create" RelativePanel.AlignLeftWithPanel="True" Content="Create" HorizontalAlignment="Left" VerticalAlignment="Center"                     Margin="30,0,0,0"/>
-                        <Button x:ConnectionId='18' x:Name="Cancel" Content="Cancel" RelativePanel.AlignRightWithPanel="True" HorizontalAlignment="Center" VerticalAlignment="Center"                     Margin="0,0,30,0"/>
+                        <Button x:ConnectionId='18' x:Name="Create" RelativePanel.AlignLeftWithPanel="True" Content="Create" HorizontalAlignment="Left" VerticalAlignment="Center"                     Margin="30,0,0,0"/>
+                        <Button x:ConnectionId='19' x:Name="Cancel" Content="Cancel" RelativePanel.AlignRightWithPanel="True" HorizontalAlignment="Center" VerticalAlignment="Center"                     Margin="0,0,30,0"/>
                     </RelativePanel>
                 </Grid>
             </ScrollViewer>
@@ -127,8 +127,8 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:ConnectionId='23' Name="Delete" Icon="Delete"                      Visibility="Collapsed"></AppBarButton>
-            <AppBarButton x:ConnectionId='24' Icon="Add"                    ></AppBarButton>
+            <AppBarButton x:ConnectionId='25' Name="Delete" Icon="Delete"                      Visibility="Collapsed"></AppBarButton>
+            <AppBarButton x:ConnectionId='26' Icon="Add"                    ></AppBarButton>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

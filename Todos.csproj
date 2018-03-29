@@ -112,6 +112,7 @@
     <None Include="Todos_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\banana.png" />
     <Content Include="Assets\loginBackground.jpg" />
     <Content Include="Assets\logo.png" />
     <Content Include="Properties\Default.rd.xml" />

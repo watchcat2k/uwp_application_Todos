@@ -28,13 +28,13 @@
     <AppXManifest Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-28T14:35:24.720</Modified>
+      <Modified>2018-03-29T13:16:33.387</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\Todos.exe">
       <PackagePath>entrypoint\Todos.exe</PackagePath>
-      <Modified>2018-03-28T14:35:23.717</Modified>
+      <Modified>2018-03-29T13:16:33.040</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Shinelon\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -448,9 +448,9 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2015-07-22T15:11:12.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Assets\loginBackground.jpg">
-      <PackagePath>Assets\loginBackground.jpg</PackagePath>
-      <Modified>2018-03-27T08:40:18.960</Modified>
+    <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Assets\banana.png">
+      <PackagePath>Assets\banana.png</PackagePath>
+      <Modified>2016-10-06T01:52:44.716</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Assets\logo.png">
       <PackagePath>Assets\logo.png</PackagePath>
@@ -490,13 +490,17 @@
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T09:22:56.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Assets\loginBackground.jpg">
+      <PackagePath>Assets\loginBackground.jpg</PackagePath>
+      <Modified>2018-03-27T08:40:18.960</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2018-03-27T08:38:12.406</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\Todos.xr.xml">
       <PackagePath>Todos.xr.xml</PackagePath>
-      <Modified>2018-03-28T14:35:23.471</Modified>
+      <Modified>2018-03-29T13:14:29.234</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -505,11 +509,11 @@
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-28T14:35:24.449</Modified>
+      <Modified>2018-03-29T13:14:29.968</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\Core\Todos.exe">
       <PackagePath>Todos.exe</PackagePath>
-      <Modified>2018-03-28T14:35:24.714</Modified>
+      <Modified>2018-03-29T13:16:33.383</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

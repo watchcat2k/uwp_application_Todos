@@ -87,8 +87,8 @@
                                         </Grid.ColumnDefinitions>
 
                                         <CheckBox Name="checkbox" Grid.Column="0" VerticalAlignment="Top" Height="32" Width="32" HorizontalAlignment="Left" Click="checkBox1Click" Margin="0,38,0,0" IsChecked="{Binding completed, Mode=TwoWay}"/>
-                                        <Image Name="image" Source="Assets/logo.png" Height="90" Width="90" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2"/>
-                                        <TextBlock Name="textBlock1" Text="{x:Bind title}" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Margin="100,43,0,0" Grid.Column="2" Height="20" Width="61"/>
+                                        <Image Name="image" Source="{x:Bind coverImage, Mode=OneWay}" Height="90" Width="90" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2"/>
+                                        <TextBlock Name="textBlock1" Text="{x:Bind title, Mode=OneWay}" VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Margin="100,43,0,0" Grid.Column="2" Height="20" Width="61"/>
                                         <Line Name="line1" Stretch="Fill" Stroke="Black" StrokeThickness="2" X1="1" Margin="90,49,10,49" VerticalAlignment="Center" Grid.Column="2" Visibility="{Binding ElementName=checkbox, Path=IsChecked}" />
                                     </Grid>
                                 </UserControl>
@@ -104,8 +104,8 @@
 
             <ScrollViewer Margin="0,37,0,0" VerticalAlignment="Center" Height="583">
                 <Grid Height="583" VerticalAlignment="Center" Width="360">
-                    <Image Source="Assets/logo.png" Margin="60,0,63,460"/>
-                    <Button x:Name="selectPiture" Content="select" HorizontalAlignment="Center" Margin="235,105,60,400" VerticalAlignment="Center" RenderTransformOrigin="-0.497,-3.594"/>
+                    <Image Name="MyImage" Source="Assets/banana.png" Margin="60,0,63,460"/>
+                    <Button x:Name="selectPiture" Content="select" HorizontalAlignment="Center" Margin="235,105,60,400" VerticalAlignment="Center" RenderTransformOrigin="-0.497,-3.594" Click="selectPitureClick"/>
 
                     <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="30,148,296,362" TextWrapping="Wrap" Text="title" VerticalAlignment="Center" FontSize="20" RenderTransformOrigin="0.717,-1.017"/>
                     <TextBox x:Name="textTitle" HorizontalAlignment="Center" Margin="30,180,30,310" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="47" FontSize="24" Width="300"/>
