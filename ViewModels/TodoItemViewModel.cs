@@ -11,8 +11,8 @@ namespace Todos.ViewModels
 
     class TodoItemViewModel
     {
-        private ObservableCollection<Models.TodoItem> allItems = new ObservableCollection<Models.TodoItem>();
-        public ObservableCollection<Models.TodoItem> AllItems { get { return this.allItems; } }
+        private static ObservableCollection<Models.TodoItem> allItems = new ObservableCollection<Models.TodoItem>();
+        public ObservableCollection<Models.TodoItem> AllItems { get { return allItems; } }
 
         private Models.TodoItem selectedItem = null;
         public Models.TodoItem SelectedItem
@@ -27,20 +27,25 @@ namespace Todos.ViewModels
             }
         }
 
-        public  ()
+        private TodoItemViewModel()
         {
-            this.allItems.Add(new Models.TodoItem("title1", "description1", DateTimeOffset.Now, new BitmapImage(new Uri("ms-appx:///Assets/banana.png"))));
-            this.allItems.Add(new Models.TodoItem("title2", "description2", DateTimeOffset.Now, new BitmapImage(new Uri("ms-appx:///Assets/banana.png"))));
+            allItems.Add(new Models.TodoItem("title1", "description1", DateTimeOffset.Now, new BitmapImage(new Uri("ms-appx:///Assets/banana.png"))));
+            allItems.Add(new Models.TodoItem("title2", "description2", DateTimeOffset.Now, new BitmapImage(new Uri("ms-appx:///Assets/banana.png"))));
+        }
+
+        public static ObservableCollection<Models.TodoItem> GetInstance()
+        {
+            return allItems;
         }
 
         public void AddTodoItem(string title, string description, DateTimeOffset duedate, BitmapImage coverImage)
         {
-            this.allItems.Add(new Models.TodoItem(title, description, duedate, coverImage));
+            allItems.Add(new Models.TodoItem(title, description, duedate, coverImage));
         }
 
         public void RemoveTodoItem(string title, string description, DateTimeOffset duedate)
         {
-            this.allItems.Remove(this.selectedItem);
+            allItems.Remove(this.selectedItem);
             this.selectedItem = null;
         }
 

@@ -72,7 +72,7 @@ namespace Todos
         public MainPage()
         {
             this.InitializeComponent();
-            this.ViewModel = new ViewModels.TodoItemViewModel();
+            this.ViewModel = ViewModels.TodoItemViewModel.GetInstance();
         }
 
         ViewModels.TodoItemViewModel ViewModel { get; set; }
