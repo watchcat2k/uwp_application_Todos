@@ -89,6 +89,10 @@ namespace Todos
                 if (ApplicationData.Current.LocalSettings.Values.ContainsKey("mainpage"))
                 {
                     var composite = ApplicationData.Current.LocalSettings.Values["mainpage"] as ApplicationDataCompositeValue;
+                    for (int i = 0; i < ViewModel.AllItems.Count(); i++)
+                    {
+                        ViewModel.AllItems[i].completed = (bool)composite["ischecked" + i];
+                    }
                     textTitle.Text = (string)composite["title"];
                     textDetail.Text = (string)composite["detail"];
                     DueDate.Date = (DateTimeOffset)composite["date"];
@@ -104,6 +108,10 @@ namespace Todos
             if (suspending)
             {
                 ApplicationDataCompositeValue composite = new ApplicationDataCompositeValue();
+                for (int i = 0; i < ViewModel.AllItems.Count(); i++)
+                {
+                    composite["ischecked" + i] = ViewModel.AllItems[i].completed;
+                }
                 composite["title"] = textTitle.Text;
                 composite["detail"] = textDetail.Text;
                 composite["date"] = DueDate.Date;
