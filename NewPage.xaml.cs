@@ -29,6 +29,7 @@ namespace Todos
         public NewPage()
         {
             this.InitializeComponent();
+            this.ViewModel = ViewModels.TodoItemViewModel.GetInstance();
         }
 
         private ViewModels.TodoItemViewModel ViewModel;
@@ -49,7 +50,6 @@ namespace Todos
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.ViewModel = (ViewModels.TodoItemViewModel)e.Parameter;
 
             if (e.NavigationMode == NavigationMode.New)
             {
@@ -133,7 +133,7 @@ namespace Todos
                 textTitle.Text = "";
                 textDetail.Text = "";
                 DueDate.Date = DateTimeOffset.Now;
-                Frame.Navigate(typeof(MainPage), ViewModel);
+                Frame.Navigate(typeof(MainPage));
             }
         }
 
@@ -166,7 +166,7 @@ namespace Todos
                 textTitle.Text = "";
                 textDetail.Text = "";
                 DueDate.Date = DateTimeOffset.Now;
-                Frame.Navigate(typeof(MainPage), ViewModel);
+                Frame.Navigate(typeof(MainPage));
             }
         }
 
@@ -177,7 +177,7 @@ namespace Todos
             textDetail.Text = "";
             DueDate.Date = DateTimeOffset.Now;
             Delete.Visibility = Visibility.Collapsed;
-            Frame.Navigate(typeof(MainPage), ViewModel);
+            Frame.Navigate(typeof(MainPage));
         }
 
         private async void selectClick(object sender, RoutedEventArgs e)

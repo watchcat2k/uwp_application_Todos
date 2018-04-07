@@ -11,8 +11,10 @@ namespace Todos.ViewModels
 
     class TodoItemViewModel
     {
-        private static ObservableCollection<Models.TodoItem> allItems = new ObservableCollection<Models.TodoItem>();
-        public ObservableCollection<Models.TodoItem> AllItems { get { return allItems; } }
+        private static TodoItemViewModel instance;
+
+        private ObservableCollection<Models.TodoItem> allItems = new ObservableCollection<Models.TodoItem>();
+        public ObservableCollection<Models.TodoItem> AllItems { get { return this.allItems; } }
 
         private Models.TodoItem selectedItem = null;
         public Models.TodoItem SelectedItem
@@ -29,23 +31,27 @@ namespace Todos.ViewModels
 
         private TodoItemViewModel()
         {
-            allItems.Add(new Models.TodoItem("title1", "description1", DateTimeOffset.Now, new BitmapImage(new Uri("ms-appx:///Assets/banana.png"))));
-            allItems.Add(new Models.TodoItem("title2", "description2", DateTimeOffset.Now, new BitmapImage(new Uri("ms-appx:///Assets/banana.png"))));
+            this.allItems.Add(new Models.TodoItem("title1", "description1", DateTimeOffset.Now, new BitmapImage(new Uri("ms-appx:///Assets/banana.png"))));
+            this.allItems.Add(new Models.TodoItem("title2", "description2", DateTimeOffset.Now, new BitmapImage(new Uri("ms-appx:///Assets/banana.png"))));
         }
 
-        public static ObservableCollection<Models.TodoItem> GetInstance()
+        public static TodoItemViewModel GetInstance()
         {
-            return allItems;
+            if (instance == null)
+            {
+                instance = new TodoItemViewModel();
+            }
+            return instance;
         }
 
         public void AddTodoItem(string title, string description, DateTimeOffset duedate, BitmapImage coverImage)
         {
-            allItems.Add(new Models.TodoItem(title, description, duedate, coverImage));
+            this.allItems.Add(new Models.TodoItem(title, description, duedate, coverImage));
         }
 
         public void RemoveTodoItem(string title, string description, DateTimeOffset duedate)
         {
-            allItems.Remove(this.selectedItem);
+            this.allItems.Remove(this.selectedItem);
             this.selectedItem = null;
         }
 

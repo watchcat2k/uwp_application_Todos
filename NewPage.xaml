@@ -12,7 +12,7 @@
 
         <ScrollViewer Margin="0,37,0,0" VerticalAlignment="Center" Height="583">
             <Grid Height="583" VerticalAlignment="Center" Width="360">
-                <Image Name="MyImage" Source="Assets/loginBackground.jpg" Width="240" Margin="60,0,60,437"></Image>
+                <Image Name="MyImage" Source="Assets/banana.png" Width="240" Margin="60,0,60,437"></Image>
                 <Button x:Name="selectPiture" Content="select" HorizontalAlignment="Center" Margin="235,105,60,400" VerticalAlignment="Center" RenderTransformOrigin="-0.497,-3.594" Click="selectClick"/>
 
                 <TextBlock x:Name="textBlock" HorizontalAlignment="Center" Margin="30,148,296,362" TextWrapping="Wrap" Text="title" VerticalAlignment="Center" FontSize="20" RenderTransformOrigin="0.717,-1.017"/>

@@ -79,11 +79,7 @@ namespace Todos
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (e.Parameter.GetType() == typeof(ViewModels.TodoItemViewModel))
-            {
-                this.ViewModel = (ViewModels.TodoItemViewModel)e.Parameter;
-            }
-
+            ViewModel.SelectedItem = null;
             if (e.NavigationMode == NavigationMode.New)
             {
                 ApplicationData.Current.LocalSettings.Values.Remove("mainpage");
@@ -123,7 +119,7 @@ namespace Todos
         private void navToButton(object sender, RoutedEventArgs e)
         {
             if (backgroundGrid.ActualWidth <= 800)
-                this.Frame.Navigate(typeof(NewPage), ViewModel);
+                this.Frame.Navigate(typeof(NewPage));
         }
 
         private void CancelClick(object sender, RoutedEventArgs e)
@@ -180,7 +176,7 @@ namespace Todos
             ViewModel.SelectedItem = (Models.TodoItem)(e.ClickedItem);
             if (backgroundGrid.ActualWidth <= 800)
             {
-                Frame.Navigate(typeof(NewPage), ViewModel);
+                Frame.Navigate(typeof(NewPage));
             }
             else
             {
@@ -239,7 +235,7 @@ namespace Todos
                     Create.Click -= Update;
                     Create.Click += CreateClick;
                 }
-                Frame.Navigate(typeof(MainPage), ViewModel);
+                Frame.Navigate(typeof(MainPage));
             }
         }
 
