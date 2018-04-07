@@ -83,6 +83,36 @@ namespace Todos
             {
                 this.ViewModel = (ViewModels.TodoItemViewModel)e.Parameter;
             }
+
+            if (e.NavigationMode == NavigationMode.New)
+            {
+                ApplicationData.Current.LocalSettings.Values.Remove("mainpage");
+            }
+            else
+            {
+                if (ApplicationData.Current.LocalSettings.Values.ContainsKey("mainpage"))
+                {
+                    var composite = ApplicationData.Current.LocalSettings.Values["mainpage"] as ApplicationDataCompositeValue;
+                    textTitle.Text = (string)composite["title"];
+                    textDetail.Text = (string)composite["detail"];
+                    DueDate.Date = (DateTimeOffset)composite["date"];
+
+                    ApplicationData.Current.LocalSettings.Values.Remove("mainpage");
+                }
+            }
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            bool suspending = ((App)App.Current).issuspend;
+            if (suspending)
+            {
+                ApplicationDataCompositeValue composite = new ApplicationDataCompositeValue();
+                composite["title"] = textTitle.Text;
+                composite["detail"] = textDetail.Text;
+                composite["date"] = DueDate.Date;
+                ApplicationData.Current.LocalSettings.Values["mainpage"] = composite;
+            }
         }
 
         private void checkBox1Click(object sender, RoutedEventArgs e)

@@ -33,24 +33,58 @@ namespace Todos
 
         private ViewModels.TodoItemViewModel ViewModel;
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            bool suspending = ((App)App.Current).issuspend;
+            if (suspending)
+            {
+                ApplicationDataCompositeValue composite = new ApplicationDataCompositeValue();
+                composite["title"] = textTitle.Text;
+                composite["detail"] = textDetail.Text;
+                composite["date"] = DueDate.Date;
+
+                ApplicationData.Current.LocalSettings.Values["newpage"] = composite;
+            }
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.ViewModel = (ViewModels.TodoItemViewModel)e.Parameter;
-            if (ViewModel.SelectedItem == null)
+
+            if (e.NavigationMode == NavigationMode.New)
             {
-                Create.Content = "Create";
+                ApplicationData.Current.LocalSettings.Values.Remove("newpage");
             }
             else
             {
-                Create.Content = "Update";
-                Create.Click -= CreateClick;
-                Create.Click -= Update;
-                Create.Click += Update;
-                textTitle.Text = ViewModel.SelectedItem.title;
-                textDetail.Text = ViewModel.SelectedItem.description;
-                DueDate.Date = ViewModel.SelectedItem.duedate;
-                MyImage.Source = ViewModel.SelectedItem.coverImage;
-                Delete.Visibility = Visibility.Visible;
+                if (ApplicationData.Current.LocalSettings.Values.ContainsKey("newpage"))
+                {
+                    var composite = ApplicationData.Current.LocalSettings.Values["newpage"] as ApplicationDataCompositeValue;
+                    textTitle.Text = (string)composite["title"];
+                    textDetail.Text = (string)composite["detail"];
+                    DueDate.Date = (DateTimeOffset)composite["date"];
+
+                    ApplicationData.Current.LocalSettings.Values.Remove("newpage");
+                }
+            }
+            if (ViewModel != null)
+            {
+                if (ViewModel.SelectedItem == null)
+                {
+                    Create.Content = "Create";
+                }
+                else
+                {
+                    Create.Content = "Update";
+                    Create.Click -= CreateClick;
+                    Create.Click -= Update;
+                    Create.Click += Update;
+                    textTitle.Text = ViewModel.SelectedItem.title;
+                    textDetail.Text = ViewModel.SelectedItem.description;
+                    DueDate.Date = ViewModel.SelectedItem.duedate;
+                    MyImage.Source = ViewModel.SelectedItem.coverImage;
+                    Delete.Visibility = Visibility.Visible;
+                }
             }
         }
 

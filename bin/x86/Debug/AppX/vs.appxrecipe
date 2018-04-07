@@ -28,13 +28,13 @@
     <AppXManifest Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-29T13:16:33.387</Modified>
+      <Modified>2018-04-07T02:03:55.905</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\Todos.exe">
       <PackagePath>entrypoint\Todos.exe</PackagePath>
-      <Modified>2018-03-29T13:16:33.040</Modified>
+      <Modified>2018-04-07T02:03:55.544</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Shinelon\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -450,7 +450,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Assets\banana.png">
       <PackagePath>Assets\banana.png</PackagePath>
-      <Modified>2016-10-06T01:52:44.716</Modified>
+      <Modified>2018-03-29T13:18:26.821</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Assets\logo.png">
       <PackagePath>Assets\logo.png</PackagePath>
@@ -500,7 +500,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\Todos.xr.xml">
       <PackagePath>Todos.xr.xml</PackagePath>
-      <Modified>2018-03-29T13:14:29.234</Modified>
+      <Modified>2018-03-29T13:18:26.892</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -509,11 +509,11 @@
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-03-29T13:14:29.968</Modified>
+      <Modified>2018-04-07T01:20:46.751</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\Core\Todos.exe">
       <PackagePath>Todos.exe</PackagePath>
-      <Modified>2018-03-29T13:16:33.383</Modified>
+      <Modified>2018-04-07T02:03:55.900</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

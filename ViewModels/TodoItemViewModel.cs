@@ -8,6 +8,7 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace Todos.ViewModels
 {
+
     class TodoItemViewModel
     {
         private ObservableCollection<Models.TodoItem> allItems = new ObservableCollection<Models.TodoItem>();
@@ -26,7 +27,7 @@ namespace Todos.ViewModels
             }
         }
 
-        public TodoItemViewModel()
+        public  ()
         {
             this.allItems.Add(new Models.TodoItem("title1", "description1", DateTimeOffset.Now, new BitmapImage(new Uri("ms-appx:///Assets/banana.png"))));
             this.allItems.Add(new Models.TodoItem("title2", "description2", DateTimeOffset.Now, new BitmapImage(new Uri("ms-appx:///Assets/banana.png"))));
