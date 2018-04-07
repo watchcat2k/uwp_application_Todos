@@ -127,8 +127,9 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:ConnectionId='25' Name="Delete" Icon="Delete"                      Visibility="Collapsed"></AppBarButton>
-            <AppBarButton x:ConnectionId='26' Icon="Add"                    ></AppBarButton>
+            <AppBarButton x:ConnectionId='25' Name="Share" Icon="Send" Visibility="Collapsed"                    ></AppBarButton>
+            <AppBarButton x:ConnectionId='26' Name="Delete" Icon="Delete"                      Visibility="Collapsed"></AppBarButton>
+            <AppBarButton x:ConnectionId='27' Icon="Add"                    ></AppBarButton>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

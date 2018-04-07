@@ -196,3 +196,4 @@ D:\user_chen\C#\Todos\Todos\obj\x86\Debug\MultipleQualifiersPerDimensionFound.tx
 D:\user_chen\C#\Todos\Todos\obj\x86\Debug\resources.en-us.resfiles
 D:\user_chen\C#\Todos\Todos\obj\x86\Debug\resources.en-us.resfiles.intermediate
 D:\user_chen\C#\Todos\Todos\obj\x86\Debug\ProjectArchitectures.txt
+D:\user_chen\C#\Todos\Todos\obj\x86\Debug\Todos.csprojResolveAssemblyReference.cache

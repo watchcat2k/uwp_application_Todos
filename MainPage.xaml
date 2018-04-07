@@ -127,6 +127,7 @@
 
     <Page.BottomAppBar>
         <CommandBar>
+            <AppBarButton Name="Share" Icon="Send" Visibility="Collapsed" Click="shareButton"></AppBarButton>
             <AppBarButton Name="Delete" Icon="Delete" Click="deleteButton" Visibility="Collapsed"></AppBarButton>
             <AppBarButton Icon="Add" Click="navToButton"></AppBarButton>
         </CommandBar>

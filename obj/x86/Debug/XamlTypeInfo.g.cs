@@ -132,23 +132,25 @@ namespace Todos.Todos_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[7];
+            _typeNameTable = new string[8];
             _typeNameTable[0] = "Todos.LineConverter";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "Todos.isCheckedConverter";
             _typeNameTable[3] = "Todos.MainPage";
             _typeNameTable[4] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[5] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[6] = "Todos.NewPage";
+            _typeNameTable[6] = "Windows.Storage.Streams.RandomAccessStreamReference";
+            _typeNameTable[7] = "Todos.NewPage";
 
-            _typeTable = new global::System.Type[7];
+            _typeTable = new global::System.Type[8];
             _typeTable[0] = typeof(global::Todos.LineConverter);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::Todos.isCheckedConverter);
             _typeTable[3] = typeof(global::Todos.MainPage);
             _typeTable[4] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[5] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[6] = typeof(global::Todos.NewPage);
+            _typeTable[6] = typeof(global::Windows.Storage.Streams.RandomAccessStreamReference);
+            _typeTable[7] = typeof(global::Todos.NewPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -186,7 +188,7 @@ namespace Todos.Todos_XamlTypeInfo
         private object Activate_0_LineConverter() { return new global::Todos.LineConverter(); }
         private object Activate_2_isCheckedConverter() { return new global::Todos.isCheckedConverter(); }
         private object Activate_3_MainPage() { return new global::Todos.MainPage(); }
-        private object Activate_6_NewPage() { return new global::Todos.NewPage(); }
+        private object Activate_7_NewPage() { return new global::Todos.NewPage(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -219,6 +221,7 @@ namespace Todos.Todos_XamlTypeInfo
             case 3:   //  Todos.MainPage
                 userType = new global::Todos.Todos_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_3_MainPage;
+                userType.AddMemberName("ImageStreamRef");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -231,9 +234,15 @@ namespace Todos.Todos_XamlTypeInfo
                 xamlType = new global::Todos.Todos_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 6:   //  Todos.NewPage
+            case 6:   //  Windows.Storage.Streams.RandomAccessStreamReference
+                userType = new global::Todos.Todos_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 7:   //  Todos.NewPage
                 userType = new global::Todos.Todos_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_6_NewPage;
+                userType.Activator = Activate_7_NewPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -242,11 +251,26 @@ namespace Todos.Todos_XamlTypeInfo
         }
 
 
+        private object get_0_MainPage_ImageStreamRef(object instance)
+        {
+            var that = (global::Todos.MainPage)instance;
+            return that.ImageStreamRef;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
             global::Todos.Todos_XamlTypeInfo.XamlMember xamlMember = null;
-            // No Local Properties
+            global::Todos.Todos_XamlTypeInfo.XamlUserType userType;
+
+            switch (longMemberName)
+            {
+            case "Todos.MainPage.ImageStreamRef":
+                userType = (global::Todos.Todos_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Todos.MainPage");
+                xamlMember = new global::Todos.Todos_XamlTypeInfo.XamlMember(this, "ImageStreamRef", "Windows.Storage.Streams.RandomAccessStreamReference");
+                xamlMember.Getter = get_0_MainPage_ImageStreamRef;
+                xamlMember.SetIsReadOnly();
+                break;
+            }
             return xamlMember;
         }
     }

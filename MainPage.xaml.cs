@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics.Imaging;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
@@ -16,6 +18,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+
 
 //“空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 上有介绍
 
@@ -73,9 +76,13 @@ namespace Todos
         {
             this.InitializeComponent();
             this.ViewModel = ViewModels.TodoItemViewModel.GetInstance();
+            Uri imageUri = new Uri("ms-appx:///Assets/banana.png");
+            this.ImageStreamRef = RandomAccessStreamReference.CreateFromUri(imageUri);
+
         }
 
         ViewModels.TodoItemViewModel ViewModel { get; set; }
+        public RandomAccessStreamReference ImageStreamRef { get; private set; }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -141,6 +148,7 @@ namespace Todos
                 Create.Click -= CreateClick;
                 Create.Click -= Update;
                 Create.Click += CreateClick;
+                Share.Visibility = Visibility.Collapsed;
                 Delete.Visibility = Visibility.Collapsed;
                 ViewModel.SelectedItem = null;
             }
@@ -195,6 +203,7 @@ namespace Todos
                 else
                 {
                     Delete.Visibility = Visibility.Visible;
+                    Share.Visibility = Visibility.Visible;
                     Create.Content = "Update";
                     Create.Click -= CreateClick;
                     Create.Click -= Update;
@@ -260,6 +269,7 @@ namespace Todos
                 Create.Click -= Update;
                 Create.Click += CreateClick;
                 Delete.Visibility = Visibility.Collapsed;
+                Share.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -288,5 +298,24 @@ namespace Todos
                 }
             }
         }
+
+        private void shareButton(object sender, RoutedEventArgs e)
+        {
+            DataTransferManager.ShowShareUI();
+            DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
+            dataTransferManager.DataRequested += DataTransferManager_DataRequested;
+        }
+
+        private void DataTransferManager_DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
+        {
+            DataRequest request = args.Request;
+
+            request.Data.SetText("share");
+            request.Data.Properties.Title = ViewModel.SelectedItem.title;
+            request.Data.Properties.Description = ViewModel.SelectedItem.description;
+            request.Data.SetBitmap(ImageStreamRef);
+        }
+
+
     }
 }
