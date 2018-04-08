@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Xml;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.Data.Xml.Dom;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Imaging;
@@ -81,13 +84,24 @@ namespace Todos
             Uri imageUri = new Uri("ms-appx:///Assets/banana.png");
             this.ImageStreamRef = RandomAccessStreamReference.CreateFromUri(imageUri);
 
+            tile_create();
+        }
+
+        private void tile_create()
+        {
             Windows.Data.Xml.Dom.XmlDocument document = new Windows.Data.Xml.Dom.XmlDocument();
             document.LoadXml(System.IO.File.ReadAllText("XMLFile1.xml"));
-            // Create the tile notification
-            var tileNotif = new TileNotification(document);
+            Windows.Data.Xml.Dom.XmlNodeList Texttitle = document.GetElementsByTagName("text");
 
-            // And send the notification to the primary tile
-            TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotif);
+            TileUpdateManager.CreateTileUpdaterForApplication().Clear();
+            TileUpdateManager.CreateTileUpdaterForApplication().EnableNotificationQueue(true);
+            for (int i = 0; i < ViewModel.AllItems.Count; i++)
+            {
+                Texttitle[0].InnerText = Texttitle[2].InnerText = Texttitle[4].InnerText = ViewModel.AllItems[i].title;
+                Texttitle[1].InnerText = Texttitle[3].InnerText = Texttitle[5].InnerText = ViewModel.AllItems[i].description;
+                TileNotification new_tile = new TileNotification(document);
+                TileUpdateManager.CreateTileUpdaterForApplication().Update(new_tile);
+            }
         }
 
         ViewModels.TodoItemViewModel ViewModel { get; set; }
