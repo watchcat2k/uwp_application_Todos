@@ -10,6 +10,7 @@ using Windows.Graphics.Imaging;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
+using Windows.UI.Notifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -75,10 +76,18 @@ namespace Todos
         public MainPage()
         {
             this.InitializeComponent();
+
             this.ViewModel = ViewModels.TodoItemViewModel.GetInstance();
             Uri imageUri = new Uri("ms-appx:///Assets/banana.png");
             this.ImageStreamRef = RandomAccessStreamReference.CreateFromUri(imageUri);
 
+            Windows.Data.Xml.Dom.XmlDocument document = new Windows.Data.Xml.Dom.XmlDocument();
+            document.LoadXml(System.IO.File.ReadAllText("XMLFile1.xml"));
+            // Create the tile notification
+            var tileNotif = new TileNotification(document);
+
+            // And send the notification to the primary tile
+            TileUpdateManager.CreateTileUpdaterForApplication().Update(tileNotif);
         }
 
         ViewModels.TodoItemViewModel ViewModel { get; set; }

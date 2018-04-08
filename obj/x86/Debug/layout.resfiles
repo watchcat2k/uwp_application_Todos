@@ -1,5 +1,6 @@
 WinMetadata\Windows.winmd
 Assets\banana.png
+Assets\cup.bmp
 Assets\LockScreenLogo.scale-200.png
 Assets\loginBackground.jpg
 Assets\logo.png
@@ -11,3 +12,4 @@ Assets\StoreLogo.png
 Assets\Wide310x150Logo.scale-200.png
 Todos.xr.xml
 Properties\Default.rd.xml
+XMLFile1.xml

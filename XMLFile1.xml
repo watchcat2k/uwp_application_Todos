@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<tile>
+  <visual>
+
+    <binding template="TileSmall">
+      <text>title</text>
+      <text hint-style="captionSubtle">description</text>
+      <image src="Assets/cup.bmp" placement="background"/>
+    </binding>
+
+    <binding template="TileMedium" branding="name" displayName="TodoList">
+      <text hint-wrap="true" hint-maxLines="2">title</text>
+      <text hint-style="captionSubtle">description</text>
+      <image src="Assets/cup.bmp" placement="background"/>
+    </binding>
+
+    <binding template="TileWide" branding="nameAndLogo" displayName="TodoList">
+      <text>title</text>
+      <text hint-style="captionSubtle">description</text>
+      <image src="Assets/cup.bmp" placement="background"/>
+    </binding>
+
+  </visual>
+</tile>

@@ -367,11 +367,17 @@
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Assets\cup.bmp">
+      <PackagePath>Assets\cup.bmp</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Assets\loginBackground.jpg">
       <PackagePath>Assets\loginBackground.jpg</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\XMLFile1.xml">
+      <PackagePath>XMLFile1.xml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\Todos.xr.xml">
       <PackagePath>Todos.xr.xml</PackagePath>
