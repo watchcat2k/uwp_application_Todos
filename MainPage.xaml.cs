@@ -84,10 +84,10 @@ namespace Todos
             Uri imageUri = new Uri("ms-appx:///Assets/banana.png");
             this.ImageStreamRef = RandomAccessStreamReference.CreateFromUri(imageUri);
 
-            tile_create();
+            tileCreate();
         }
 
-        private void tile_create()
+        private void tileCreate()
         {
             Windows.Data.Xml.Dom.XmlDocument document = new Windows.Data.Xml.Dom.XmlDocument();
             document.LoadXml(System.IO.File.ReadAllText("XMLFile1.xml"));
@@ -97,10 +97,13 @@ namespace Todos
             TileUpdateManager.CreateTileUpdaterForApplication().EnableNotificationQueue(true);
             for (int i = 0; i < ViewModel.AllItems.Count; i++)
             {
-                Texttitle[0].InnerText = Texttitle[2].InnerText = Texttitle[4].InnerText = ViewModel.AllItems[i].title;
-                Texttitle[1].InnerText = Texttitle[3].InnerText = Texttitle[5].InnerText = ViewModel.AllItems[i].description;
-                TileNotification new_tile = new TileNotification(document);
-                TileUpdateManager.CreateTileUpdaterForApplication().Update(new_tile);
+                if (i < 5)
+                {
+                    Texttitle[0].InnerText = Texttitle[2].InnerText = Texttitle[4].InnerText = ViewModel.AllItems[i].title;
+                    Texttitle[1].InnerText = Texttitle[3].InnerText = Texttitle[5].InnerText = ViewModel.AllItems[i].description;
+                    TileNotification newTile = new TileNotification(document);
+                    TileUpdateManager.CreateTileUpdaterForApplication().Update(newTile);
+                }
             }
         }
 
@@ -206,7 +209,7 @@ namespace Todos
                 textTitle.Text = "";
                 textDetail.Text = "";
                 DueDate.Date = DateTimeOffset.Now;
-                
+                tileCreate();
             }
         }
 
@@ -276,6 +279,7 @@ namespace Todos
                     Create.Click += CreateClick;
                 }
                 Frame.Navigate(typeof(MainPage));
+                tileCreate();
             }
         }
 
@@ -294,6 +298,7 @@ namespace Todos
                 Delete.Visibility = Visibility.Collapsed;
                 Share.Visibility = Visibility.Collapsed;
             }
+            tileCreate();
         }
 
         private async void selectPitureClick(object sender, RoutedEventArgs e)
