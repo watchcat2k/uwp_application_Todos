@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
@@ -48,7 +49,7 @@ namespace Todos
             }
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
 
             if (e.NavigationMode == NavigationMode.New)
@@ -57,6 +58,17 @@ namespace Todos
             }
             else
             {
+                if (ApplicationData.Current.LocalSettings.Values["image"] != null)
+                {
+                    StorageFile temp;
+                    temp = await StorageApplicationPermissions.FutureAccessList.GetFileAsync((string)ApplicationData.Current.LocalSettings.Values["image"]);
+                    IRandomAccessStream ir = await temp.OpenAsync(FileAccessMode.Read);
+                    BitmapImage bi = new BitmapImage();
+                    await bi.SetSourceAsync(ir);
+                    MyImage.Source = bi;
+                    ApplicationData.Current.LocalSettings.Values["image"] = null;
+                }
+
                 if (ApplicationData.Current.LocalSettings.Values.ContainsKey("newpage"))
                 {
                     var composite = ApplicationData.Current.LocalSettings.Values["newpage"] as ApplicationDataCompositeValue;
@@ -196,6 +208,7 @@ namespace Todos
             var file = await openPicker.PickSingleFileAsync();
             if (file != null)
             {
+                ApplicationData.Current.LocalSettings.Values["image"] = StorageApplicationPermissions.FutureAccessList.Add(file);
                 using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.Read))
                 {
 

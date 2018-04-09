@@ -11,6 +11,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Imaging;
 using Windows.Storage;
+using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
 using Windows.UI.Notifications;
@@ -110,7 +111,7 @@ namespace Todos
         ViewModels.TodoItemViewModel ViewModel { get; set; }
         public RandomAccessStreamReference ImageStreamRef { get; private set; }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             ViewModel.SelectedItem = null;
             if (e.NavigationMode == NavigationMode.New)
@@ -119,6 +120,17 @@ namespace Todos
             }
             else
             {
+                if (ApplicationData.Current.LocalSettings.Values["image"] != null)
+                {
+                    StorageFile temp;
+                    temp = await StorageApplicationPermissions.FutureAccessList.GetFileAsync((string)ApplicationData.Current.LocalSettings.Values["image"]);
+                    IRandomAccessStream ir = await temp.OpenAsync(FileAccessMode.Read);
+                    BitmapImage bi = new BitmapImage();
+                    await bi.SetSourceAsync(ir);
+                    MyImage.Source = bi;
+                    ApplicationData.Current.LocalSettings.Values["image"] = null;
+                }
+
                 if (ApplicationData.Current.LocalSettings.Values.ContainsKey("mainpage"))
                 {
                     var composite = ApplicationData.Current.LocalSettings.Values["mainpage"] as ApplicationDataCompositeValue;
@@ -318,6 +330,7 @@ namespace Todos
             var file = await openPicker.PickSingleFileAsync();
             if (file != null)
             {
+                ApplicationData.Current.LocalSettings.Values["image"] = StorageApplicationPermissions.FutureAccessList.Add(file);
                 using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.Read))
                 {
 
