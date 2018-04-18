@@ -65,7 +65,7 @@ namespace Todos.ViewModels
             this.selectedItem.duedate = duedate;
             this.selectedItem.coverImage = coverImage;
             this.selectedItem.imauri = imauri;
-            Services.DbContext.UpdateData(this.selectedItem.id, title, description, duedate, coverImage, imauri);
+            Services.DbContext.UpdateData(this.selectedItem.id, title, description, duedate, coverImage, imauri, this.selectedItem.completed);
             this.selectedItem = null;
         }
     }

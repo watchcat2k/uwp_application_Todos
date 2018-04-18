@@ -14,10 +14,10 @@ namespace Todos.Services
         // string id, string title, string description, DateTimeOffset duedate, BitmapImage coverImage
         private static String DB_NAME = "SQLiteSample.db";
         private static String TABLE_NAME = "SampleTable";
-        private static String SQL_CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (Key STRING PRIMARY KEY NOT NULL,Title VARCHAR(140) NOT NULL,Description TEXT,Date VARCHAR(140),Image VARCHAR(350));";
-        private static string SQL_AllITEMS = "SELECT Key, Title, Description, Date, Image FROM " + TABLE_NAME;
-        private static String SQL_INSERT = "INSERT INTO " + TABLE_NAME + "(Key, Title, Description, Date, Image) VALUES(?, ?, ?, ?, ?)";
-        private static String SQL_UPDATE = "UPDATE " + TABLE_NAME + " SET Title=?, Description=?, Date=?, Image=? WHERE Key = ?";
+        private static String SQL_CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (Key STRING PRIMARY KEY NOT NULL,Title VARCHAR(140) NOT NULL,Description TEXT,Date VARCHAR(140),Image VARCHAR(350), Completed TEXT);";
+        private static string SQL_AllITEMS = "SELECT Key, Title, Description, Date, Image, Completed FROM " + TABLE_NAME;
+        private static String SQL_INSERT = "INSERT INTO " + TABLE_NAME + "(Key, Title, Description, Date, Image, Completed) VALUES(?, ?, ?, ?, ?, ?)";
+        private static String SQL_UPDATE = "UPDATE " + TABLE_NAME + " SET Title=?, Description=?, Date=?, Image=?, Completed=? WHERE Key = ?";
         private static String SQL_DELETE = "DELETE FROM " + TABLE_NAME + " WHERE Key = ?";
                                        
         public DbContext()
@@ -37,7 +37,7 @@ namespace Todos.Services
             while (statement.Step() == SQLiteResult.ROW)
             {
                 todoItemList.Add(new Models.TodoItem((string)statement[0], (string)statement[1], (string)statement[2], Models.TodoItem.stringToDateTime((string)statement[3]),
-                                                      new BitmapImage(new Uri((string)statement[4])), Models.TodoItem.stringToUri((string)statement[4])));
+                                                      new BitmapImage(new Uri((string)statement[4])), Models.TodoItem.stringToUri((string)statement[4]), (string)statement[5]));
             }
             return todoItemList;
         }
@@ -64,7 +64,7 @@ namespace Todos.Services
             return true;
         }
 
-        public static void UpdateData(string key, string title, string description, DateTimeOffset date, BitmapImage image, Uri imauri)
+        public static void UpdateData(string key, string title, string description, DateTimeOffset date, BitmapImage image, Uri imauri, bool? comp)
         {
             var connection = new SQLiteConnection(DB_NAME);
             using (var todo = connection.Prepare(SQL_UPDATE))
@@ -73,7 +73,8 @@ namespace Todos.Services
                 todo.Bind(2, description);
                 todo.Bind(3, Models.TodoItem.dateTimeToString(date));
                 todo.Bind(4, Models.TodoItem.uriToString(imauri));
-                todo.Bind(5, key);
+                todo.Bind(5, comp.ToString());
+                todo.Bind(6, key);
                 todo.Step();
             }
         }

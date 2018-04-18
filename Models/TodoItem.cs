@@ -33,7 +33,7 @@ namespace Todos.Models
             this.imauri = imauri;
         }
 
-        public TodoItem(string id, string title, string description, DateTimeOffset duedate, BitmapImage coverImage, Uri imauri)
+        public TodoItem(string id, string title, string description, DateTimeOffset duedate, BitmapImage coverImage, Uri imauri, string comp)
         {
             this.private_id = id;
             this.id = this.private_id;
@@ -41,7 +41,15 @@ namespace Todos.Models
             this.description = description;
             this.coverImage = coverImage;
             this.duedate = duedate;
-            this.private_completed = false;
+            if (comp.CompareTo("True") == 0)
+            {
+                this.private_completed = true;
+            }
+            else
+            {
+                this.private_completed = false;
+            }
+
             this.imauri = imauri;
         }
 

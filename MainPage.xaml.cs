@@ -166,6 +166,10 @@ namespace Todos
                 composite["date"] = DueDate.Date;
                 ApplicationData.Current.LocalSettings.Values["mainpage"] = composite;
             }
+            foreach (var item in this.ViewModel.AllItems)
+            {
+                Services.DbContext.UpdateData(item.id, item.title, item.description, item.duedate, item.coverImage, item.imauri, item.completed);
+            }
         }
 
         private void checkBox1Click(object sender, RoutedEventArgs e)
