@@ -10,7 +10,7 @@ namespace Todos.Models
     class TodoItem
     {
         private string private_id;
-        public string id;
+        public string id { get { return this.private_id; } set { this.private_id = value; } }
         public string title { get; set; }
         public string description { get; set; }
         private bool? private_completed;
@@ -28,5 +28,17 @@ namespace Todos.Models
             this.coverImage = coverImage;
             this.duedate = duedate;
         }
+
+        public TodoItem(string id, string title, string description, DateTimeOffset duedate, BitmapImage coverImage)
+        {
+            this.private_id = id;
+            this.id = this.private_id;
+            this.title = title;
+            this.description = description;
+            this.coverImage = coverImage;
+            this.duedate = duedate;
+            this.private_completed = false;
+        }
+
     }
 }

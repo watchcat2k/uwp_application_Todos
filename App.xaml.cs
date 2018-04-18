@@ -33,6 +33,7 @@ namespace Todos
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            Services.DbContext db = new Services.DbContext();
         }
 
         /// <summary>

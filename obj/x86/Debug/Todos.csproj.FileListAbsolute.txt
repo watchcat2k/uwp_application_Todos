@@ -197,3 +197,11 @@ D:\user_chen\C#\Todos\Todos\obj\x86\Debug\resources.en-us.resfiles
 D:\user_chen\C#\Todos\Todos\obj\x86\Debug\resources.en-us.resfiles.intermediate
 D:\user_chen\C#\Todos\Todos\obj\x86\Debug\ProjectArchitectures.txt
 D:\user_chen\C#\Todos\Todos\obj\x86\Debug\Todos.csprojResolveAssemblyReference.cache
+D:\user_chen\C#\Todos\Todos\bin\x86\Debug\SQLitePCL.Ext.dll
+D:\user_chen\C#\Todos\Todos\bin\x86\Debug\SQLitePCL.Ext.pri
+D:\user_chen\C#\Todos\Todos\bin\x86\Debug\SQLitePCL.dll
+D:\user_chen\C#\Todos\Todos\obj\x86\Debug\SQLitePCL\en\SQLitePCL.Resources.resw
+D:\user_chen\C#\Todos\Todos\obj\x86\Debug\Todos.csproj.GenerateResource.Cache
+D:\user_chen\C#\Todos\Todos\obj\x86\Debug\resources.en.resfiles
+D:\user_chen\C#\Todos\Todos\obj\x86\Debug\resources.en.resfiles.intermediate
+D:\user_chen\C#\Todos\Todos\obj\x86\Debug\SQLitePCL.Ext.pri.xml

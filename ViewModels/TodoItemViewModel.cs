@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Media.Imaging;
+using SQLitePCL;
 
 namespace Todos.ViewModels
 {
@@ -31,8 +32,7 @@ namespace Todos.ViewModels
 
         private TodoItemViewModel()
         {
-            this.allItems.Add(new Models.TodoItem("title1", "description1", DateTimeOffset.Now, new BitmapImage(new Uri("ms-appx:///Assets/banana.png"))));
-            this.allItems.Add(new Models.TodoItem("title2", "description2", DateTimeOffset.Now, new BitmapImage(new Uri("ms-appx:///Assets/banana.png"))));
+            this.allItems = Services.DbContext.getAllTodoItem();
         }
 
         public static TodoItemViewModel GetInstance()
@@ -46,7 +46,9 @@ namespace Todos.ViewModels
 
         public void AddTodoItem(string title, string description, DateTimeOffset duedate, BitmapImage coverImage)
         {
-            this.allItems.Add(new Models.TodoItem(title, description, duedate, coverImage));
+            Models.TodoItem temp = new Models.TodoItem(title, description, duedate, coverImage);
+            this.allItems.Add(temp);
+            Services.DbContext.InsertData(temp.id, title, description, duedate, coverImage);
         }
 
         public void RemoveTodoItem(string title, string description, DateTimeOffset duedate)
