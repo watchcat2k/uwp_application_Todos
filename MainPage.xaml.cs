@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using System.Xml;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Data.Xml.Dom;
@@ -15,6 +16,7 @@ using Windows.Storage.AccessCache;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
 using Windows.UI.Notifications;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -357,6 +359,28 @@ namespace Todos
             request.Data.SetBitmap(ImageStreamRef);
         }
 
-
+        private async void searchButtonClick(object sender, RoutedEventArgs e)
+        {
+            String str = "";
+            bool isFound = false;
+            if (search.Text.Length == 0) return;
+            foreach (var item in this.ViewModel.AllItems)
+            {
+                if (item.title.Contains(search.Text))
+                {
+                    str = str + "Title: " + item.title + "  Description: "
+                        + item.description + "  Time: " + item.duedate.ToString() + "\n";
+                    isFound = true;
+                }
+            }
+            if (isFound)
+            {
+                var i = await new MessageDialog(str.ToString()).ShowAsync();
+            }
+            else
+            {
+                var i = await new MessageDialog("No Such Item!").ShowAsync();
+            }
+        }
     }
 }

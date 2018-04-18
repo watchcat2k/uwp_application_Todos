@@ -50,10 +50,12 @@
 
 
             <TextBlock Text="Todos" FontSize="28" FontWeight="Bold" Height="52" VerticalAlignment="Top"></TextBlock>
+            <TextBox x:Name="search" Margin="0,4,150,0" RenderTransformOrigin="0.602,0.45" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120"/>
+            <Button x:Name="searchButton" Content="search" Margin="0,5,70,0" Height="32" HorizontalAlignment="Right" VerticalAlignment="Top" Click="searchButtonClick" />
 
-            <ScrollViewer Height="588" ScrollViewer.VerticalScrollBarVisibility="Visible" VerticalAlignment="Center" Margin="0,0,0,52" VerticalScrollMode="Enabled">
-                <Grid Height="500" VerticalAlignment="Top" Margin="0,40,0,0" >
-                    <ListView IsItemClickEnabled="True" ItemClick="ListView_ItemClick" ItemsSource="{x:Bind ViewModel.AllItems}">
+            <ScrollViewer Height="546" ScrollViewer.VerticalScrollBarVisibility="Visible" VerticalAlignment="Center" Margin="0,42,0,52" VerticalScrollMode="Enabled">
+                <Grid Height="550" VerticalAlignment="Top" Margin="0,40,0,0" >
+                    <ListView IsItemClickEnabled="True" ItemClick="ListView_ItemClick" ItemsSource="{x:Bind ViewModel.AllItems}" Margin="0,-33,0,-2">
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="md:TodoItem">
                                 <UserControl>

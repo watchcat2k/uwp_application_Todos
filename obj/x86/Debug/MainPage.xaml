@@ -50,13 +50,15 @@
 
 
             <TextBlock Text="Todos" FontSize="28" FontWeight="Bold" Height="52" VerticalAlignment="Top"></TextBlock>
+            <TextBox x:ConnectionId='20' x:Name="search" Margin="0,4,150,0" RenderTransformOrigin="0.602,0.45" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120"/>
+            <Button x:ConnectionId='21' x:Name="searchButton" Content="search" Margin="0,5,70,0" Height="32" HorizontalAlignment="Right" VerticalAlignment="Top"                           />
 
-            <ScrollViewer Height="588" ScrollViewer.VerticalScrollBarVisibility="Visible" VerticalAlignment="Center" Margin="0,0,0,52" VerticalScrollMode="Enabled">
-                <Grid Height="500" VerticalAlignment="Top" Margin="0,40,0,0" >
-                    <ListView x:ConnectionId='20' IsItemClickEnabled="True"                                                                         >
+            <ScrollViewer Height="546" ScrollViewer.VerticalScrollBarVisibility="Visible" VerticalAlignment="Center" Margin="0,42,0,52" VerticalScrollMode="Enabled">
+                <Grid Height="550" VerticalAlignment="Top" Margin="0,40,0,0" >
+                    <ListView x:ConnectionId='22' IsItemClickEnabled="True"                                                                          Margin="0,-33,0,-2">
                         <ListView.ItemTemplate>
                             <DataTemplate                         >
-                                <UserControl x:ConnectionId='21'>
+                                <UserControl x:ConnectionId='23'>
                                     <Grid Height="100" VerticalAlignment="Top" Width="auto">
                                         <VisualStateManager.VisualStateGroups>
                                             <VisualStateGroup x:Name="VisualStateGroup">
@@ -86,9 +88,9 @@
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
 
-                                        <CheckBox x:ConnectionId='22' Name="checkbox" Grid.Column="0" VerticalAlignment="Top" Height="32" Width="32" HorizontalAlignment="Left"                        Margin="0,38,0,0" IsChecked="{Binding completed, Mode=TwoWay}"/>
-                                        <Image x:ConnectionId='23' Name="image"                                           Height="90" Width="90" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2"/>
-                                        <TextBlock x:ConnectionId='24' Name="textBlock1"                                    VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Margin="100,43,0,0" Grid.Column="2" Height="20" Width="61"/>
+                                        <CheckBox x:ConnectionId='24' Name="checkbox" Grid.Column="0" VerticalAlignment="Top" Height="32" Width="32" HorizontalAlignment="Left"                        Margin="0,38,0,0" IsChecked="{Binding completed, Mode=TwoWay}"/>
+                                        <Image x:ConnectionId='25' Name="image"                                           Height="90" Width="90" Margin="0,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2"/>
+                                        <TextBlock x:ConnectionId='26' Name="textBlock1"                                    VerticalAlignment="Top" Foreground="Black" HorizontalAlignment="Left" Margin="100,43,0,0" Grid.Column="2" Height="20" Width="61"/>
                                         <Line Name="line1" Stretch="Fill" Stroke="Black" StrokeThickness="2" X1="1" Margin="90,49,10,49" VerticalAlignment="Center" Grid.Column="2" Visibility="{Binding ElementName=checkbox, Path=IsChecked}" />
                                     </Grid>
                                 </UserControl>
@@ -127,9 +129,9 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton x:ConnectionId='25' Name="Share" Icon="Send" Visibility="Collapsed"                    ></AppBarButton>
-            <AppBarButton x:ConnectionId='26' Name="Delete" Icon="Delete"                      Visibility="Collapsed"></AppBarButton>
-            <AppBarButton x:ConnectionId='27' Icon="Add"                    ></AppBarButton>
+            <AppBarButton x:ConnectionId='27' Name="Share" Icon="Send" Visibility="Collapsed"                    ></AppBarButton>
+            <AppBarButton x:ConnectionId='28' Name="Delete" Icon="Delete"                      Visibility="Collapsed"></AppBarButton>
+            <AppBarButton x:ConnectionId='29' Icon="Add"                    ></AppBarButton>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>
