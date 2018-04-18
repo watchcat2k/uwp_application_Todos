@@ -28,13 +28,13 @@
     <AppXManifest Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-18T12:22:30.925</Modified>
+      <Modified>2018-04-18T13:39:44.260</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\Todos.exe">
       <PackagePath>entrypoint\Todos.exe</PackagePath>
-      <Modified>2018-04-18T12:22:30.319</Modified>
+      <Modified>2018-04-18T13:39:43.480</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Shinelon\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -524,7 +524,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\Todos.xr.xml">
       <PackagePath>Todos.xr.xml</PackagePath>
-      <Modified>2018-04-18T12:03:26.703</Modified>
+      <Modified>2018-04-18T12:23:34.255</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -533,11 +533,11 @@
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2018-04-18T12:16:52.188</Modified>
+      <Modified>2018-04-18T13:21:54.088</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\user_chen\C#\Todos\Todos\bin\x86\Debug\Core\Todos.exe">
       <PackagePath>Todos.exe</PackagePath>
-      <Modified>2018-04-18T12:22:30.921</Modified>
+      <Modified>2018-04-18T13:39:44.256</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

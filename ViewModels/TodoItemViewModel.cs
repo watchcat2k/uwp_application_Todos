@@ -44,11 +44,11 @@ namespace Todos.ViewModels
             return instance;
         }
 
-        public void AddTodoItem(string title, string description, DateTimeOffset duedate, BitmapImage coverImage)
+        public void AddTodoItem(string title, string description, DateTimeOffset duedate, BitmapImage coverImage, Uri imauri)
         {
-            Models.TodoItem temp = new Models.TodoItem(title, description, duedate, coverImage);
+            Models.TodoItem temp = new Models.TodoItem(title, description, duedate, coverImage, imauri);
             this.allItems.Add(temp);
-            Services.DbContext.InsertData(temp.id, title, description, duedate, coverImage);
+            Services.DbContext.InsertData(temp.id, title, description, duedate, coverImage, imauri);
         }
 
         public void RemoveTodoItem(string title, string description, DateTimeOffset duedate)
@@ -58,13 +58,14 @@ namespace Todos.ViewModels
             this.selectedItem = null;
         }
 
-        public void UpdateTodoItem(string title, string description, DateTimeOffset duedate, BitmapImage coverImage)
+        public void UpdateTodoItem(string title, string description, DateTimeOffset duedate, BitmapImage coverImage, Uri imauri)
         {
             this.selectedItem.title = title;
             this.selectedItem.description = description;
             this.selectedItem.duedate = duedate;
             this.selectedItem.coverImage = coverImage;
-            Services.DbContext.UpdateData(this.selectedItem.id, title, description, duedate, coverImage);
+            this.selectedItem.imauri = imauri;
+            Services.DbContext.UpdateData(this.selectedItem.id, title, description, duedate, coverImage, imauri);
             this.selectedItem = null;
         }
     }

@@ -90,6 +90,11 @@ namespace Todos
             tileCreate();
         }
 
+        private StorageFile imageFile = null;
+        private Uri imauri = new Uri(Models.TodoItem.defaultImagePath);
+        ViewModels.TodoItemViewModel ViewModel { get; set; }
+        public RandomAccessStreamReference ImageStreamRef { get; private set; }
+
         private void tileCreate()
         {
             Windows.Data.Xml.Dom.XmlDocument document = new Windows.Data.Xml.Dom.XmlDocument();
@@ -109,9 +114,6 @@ namespace Todos
                 }
             }
         }
-
-        ViewModels.TodoItemViewModel ViewModel { get; set; }
-        public RandomAccessStreamReference ImageStreamRef { get; private set; }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -219,7 +221,15 @@ namespace Todos
             }
             else
             {
-                ViewModel.AddTodoItem(textTitle.Text, textDetail.Text, DueDate.Date, MyImage.Source as BitmapImage);
+                if (imageFile != null)
+                {
+                    string imageName = imageFile.Name;
+                    StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+                    StorageFile newImageFile = await imageFile.CopyAsync(localFolder, imageName, NameCollisionOption.ReplaceExisting);
+                    imauri = new Uri(newImageFile.Path);
+                }
+
+                ViewModel.AddTodoItem(textTitle.Text, textDetail.Text, DueDate.Date, MyImage.Source as BitmapImage, imauri);
                 textTitle.Text = "";
                 textDetail.Text = "";
                 DueDate.Date = DateTimeOffset.Now;
@@ -281,7 +291,15 @@ namespace Todos
             }
             else
             {
-                ViewModel.UpdateTodoItem(textTitle.Text, textDetail.Text, DueDate.Date, MyImage.Source as BitmapImage);
+                if (imageFile != null)
+                {
+                    string imageName = imageFile.Name;
+                    StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+                    StorageFile newImageFile = await imageFile.CopyAsync(localFolder, imageName, NameCollisionOption.ReplaceExisting);
+                    imauri = new Uri(newImageFile.Path);
+                }
+
+                ViewModel.UpdateTodoItem(textTitle.Text, textDetail.Text, DueDate.Date, MyImage.Source as BitmapImage, imauri);
                 textTitle.Text = "";
                 textDetail.Text = "";
                 DueDate.Date = DateTimeOffset.Now;
@@ -333,6 +351,7 @@ namespace Todos
             if (file != null)
             {
                 ApplicationData.Current.LocalSettings.Values["image"] = StorageApplicationPermissions.FutureAccessList.Add(file);
+                imageFile = file;
                 using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.Read))
                 {
 

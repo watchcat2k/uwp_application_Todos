@@ -15,7 +15,6 @@ namespace Todos.Services
         private static String DB_NAME = "SQLiteSample.db";
         private static String TABLE_NAME = "SampleTable";
         private static String SQL_CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (Key STRING PRIMARY KEY NOT NULL,Title VARCHAR(140) NOT NULL,Description TEXT,Date VARCHAR(140),Image VARCHAR(350));";
-        private static String SQL_QUERY_VALUE = "SELECT Value FROM " + TABLE_NAME + " WHERE Key = (?);";
         private static string SQL_AllITEMS = "SELECT Key, Title, Description, Date, Image FROM " + TABLE_NAME;
         private static String SQL_INSERT = "INSERT INTO " + TABLE_NAME + "(Key, Title, Description, Date, Image) VALUES(?, ?, ?, ?, ?)";
         private static String SQL_UPDATE = "UPDATE " + TABLE_NAME + " SET Title=?, Description=?, Date=?, Image=? WHERE Key = ?";
@@ -38,12 +37,12 @@ namespace Todos.Services
             while (statement.Step() == SQLiteResult.ROW)
             {
                 todoItemList.Add(new Models.TodoItem((string)statement[0], (string)statement[1], (string)statement[2], Models.TodoItem.stringToDateTime((string)statement[3]),
-                                                      new BitmapImage(new Uri("ms-appx:///Assets/banana.png"))));
+                                                      new BitmapImage(new Uri((string)statement[4])), Models.TodoItem.stringToUri((string)statement[4])));
             }
             return todoItemList;
         }
 
-        public static bool InsertData(string key, string title, string description, DateTimeOffset date, BitmapImage image)
+        public static bool InsertData(string key, string title, string description, DateTimeOffset date, BitmapImage image, Uri imauri)
         {
             var conn = new SQLiteConnection(DB_NAME);
             try
@@ -54,6 +53,7 @@ namespace Todos.Services
                     todo.Bind(2, title);
                     todo.Bind(3, description);
                     todo.Bind(4, Models.TodoItem.dateTimeToString(date));
+                    todo.Bind(5, Models.TodoItem.uriToString(imauri));
                     todo.Step();
                 }
             }
@@ -64,7 +64,7 @@ namespace Todos.Services
             return true;
         }
 
-        public static void UpdateData(string key, string title, string description, DateTimeOffset date, BitmapImage image)
+        public static void UpdateData(string key, string title, string description, DateTimeOffset date, BitmapImage image, Uri imauri)
         {
             var connection = new SQLiteConnection(DB_NAME);
             using (var todo = connection.Prepare(SQL_UPDATE))
@@ -72,7 +72,7 @@ namespace Todos.Services
                 todo.Bind(1, title);
                 todo.Bind(2, description);
                 todo.Bind(3, Models.TodoItem.dateTimeToString(date));
-    
+                todo.Bind(4, Models.TodoItem.uriToString(imauri));
                 todo.Bind(5, key);
                 todo.Step();
             }
