@@ -37,8 +37,8 @@ namespace Todos.Services
             var statement = con.Prepare(SQL_AllITEMS);
             while (statement.Step() == SQLiteResult.ROW)
             {
-                todoItemList.Add(new Models.TodoItem((string)statement[0], (string)statement[1], (string)statement[2], (DateTimeOffset)statement[3],
-                                                      (BitmapImage)statement[4]));
+                todoItemList.Add(new Models.TodoItem((string)statement[0], (string)statement[1], (string)statement[2], Models.TodoItem.stringToDateTime((string)statement[3]),
+                                                      new BitmapImage(new Uri("ms-appx:///Assets/banana.png"))));
             }
             return todoItemList;
         }
@@ -53,8 +53,7 @@ namespace Todos.Services
                     todo.Bind(1, key);
                     todo.Bind(2, title);
                     todo.Bind(3, description);
-                    todo.Bind(4, date);
-                    todo.Bind(5, image);
+                    todo.Bind(4, Models.TodoItem.dateTimeToString(date));
                     todo.Step();
                 }
             }
@@ -72,8 +71,8 @@ namespace Todos.Services
             {
                 todo.Bind(1, title);
                 todo.Bind(2, description);
-                todo.Bind(3, date);
-                todo.Bind(4, image);
+                todo.Bind(3, Models.TodoItem.dateTimeToString(date));
+    
                 todo.Bind(5, key);
                 todo.Step();
             }

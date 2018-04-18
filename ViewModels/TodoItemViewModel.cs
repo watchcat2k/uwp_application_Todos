@@ -54,6 +54,7 @@ namespace Todos.ViewModels
         public void RemoveTodoItem(string title, string description, DateTimeOffset duedate)
         {
             this.allItems.Remove(this.selectedItem);
+            Services.DbContext.DeleteData(this.selectedItem.id);
             this.selectedItem = null;
         }
 
@@ -63,6 +64,7 @@ namespace Todos.ViewModels
             this.selectedItem.description = description;
             this.selectedItem.duedate = duedate;
             this.selectedItem.coverImage = coverImage;
+            Services.DbContext.UpdateData(this.selectedItem.id, title, description, duedate, coverImage);
             this.selectedItem = null;
         }
     }

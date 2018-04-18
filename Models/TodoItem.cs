@@ -40,5 +40,14 @@ namespace Todos.Models
             this.private_completed = false;
         }
 
+        public static string dateTimeToString(DateTimeOffset date)
+        {
+            return date.ToString();
+        }
+        public static DateTimeOffset stringToDateTime(string datestring)
+        {
+            return DateTimeOffset.Parse(datestring);
+        }
+
     }
 }
